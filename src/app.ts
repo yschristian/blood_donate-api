@@ -45,7 +45,10 @@ class App {
     private initialiseDatabaseConnection(): void {
 
         const { MONGO_URL } = process.env
-        mongoose.connect(`${MONGO_URL}`)
+        mongoose.connect(`${MONGO_URL}`).then(()=>{
+            console.log("database connected successfully");
+            
+        })
     }
     public listen(): void{
         this.express.listen(this.port , () =>{
